@@ -1,77 +1,44 @@
-from Tkinter import *
+class Calculadora(object):
+
+    def __init__(self, n1, n2):
+        self.n1 = n1
+        self.n2 = n2
+    
+    def __add__(self, n1, n2):
+        total = (n1 + n2)
+        return total
+
+    def __sub__(self, n1, n2):
+        total = n1 - n2
+        return total
+
+    def __mult__(self, n1, n2):
+        total = n1 * n2
+        return total
+
+    def __truediv__(self, n1, n2):
+        total = n1 / n2
+        return total
+
+while True:
+    n1 = float(input('Primeiro valor: '))
+    operador = input('Operador [+ - * /]: ')
+    n2 = float(input('Segundo valor: '))
 
 
-# Define as operacoes
+    calc = Calculadora(n1, n2)
 
-# class calculadora:
+    if operador == '+':
+        print('%.2f %s %.2f = %.2f' %(n1, operador, n2, calc.__add__(n1, n2)))
+    elif operador == '-':
+        print('%.2f %s %.2f = %.2f' %(n1, operador, n2, calc.__sub__(n1, n2)))
+    elif operador == '*':
+        print('%.2f %s %.2f = %.2f' %(n1, operador, n2, calc.__mult__(n1, n2)))
+    else:
+        print('%.2f %s %.2f = %.2f' %(n1, operador, n2, calc.__truediv__(n1, n2)))
 
-def adicao(num1, num2):
-    """ adicao """
-    return num1 + num2
+    sair = input('\n...para sair digite "q" :')
+    if sair == 'q':
+        break
 
-
-def subtracao(num1, num2):
-    """ subtracao """
-    return num1 - num2
-
-
-def multiplicacao(num1, num2):
-    """ multiplicacao """
-    return num1 * num2
-
-
-def divisao(num1, num2):
-    """ divisao """
-    return num1 / num2
-
-
-def potenciacao(num1, num2):
-    """ potenciacao """
-    return num1 ** num2
-
-
-def radiciacao(num1, num2):
-    """ radiciacao """
-    return num1 ** (1 / num2)
-
-
-def nao_escolheu():
-    """ sem escolha """
-    print("Nao escolheu funcao valida")
-
-
-# Prepara a base para a funcao que escolhe a operacao a ser feita
-
-print("Escolha a operacao:")
-print("1.adicao")
-print("2.Subtracao")
-print("3.Multiplicacao")
-print("4.Divisao")
-print("5.Potenciacao")
-print("6.Radiciacao")
-print("7.Nenhuma")
-
-Escolha = input("Escolha a operacao pelo numero:")
-Numero1 = int(input("Primeiro numero: "))
-Numero2 = int(input("Segundo numero: "))
-
-if Escolha == 1:
-    print Numero1, '+', Numero2, '=', adicao(Numero1, Numero2)
-
-elif Escolha == 2:
-    print Numero1, '-', Numero2, '=', subtracao(Numero1, Numero2)
-
-elif Escolha == 3:
-    print Numero1, 'x', Numero2, '=', multiplicacao(Numero1, Numero2)
-
-elif Escolha == 4:
-    print Numero1, '/', Numero2, '=', divisao(Numero1, Numero2)
-
-elif Escolha == 5:
-    print Numero1, 'elevado a ', Numero2, '=', potenciacao(Numero1, Numero2)
-
-elif Escolha == 6:
-    print 'raiz ', Numero2, 'de', Numero1, '=', radiciacao(Numero1, Numero2)
-
-elif Escolha == 7:
-    print 'Nao escolheu uma operacao'
+    print('*' * 30, '\n')
